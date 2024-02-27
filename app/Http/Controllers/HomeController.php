@@ -11,19 +11,24 @@ class HomeController extends Controller
         // Check if the user is authenticated
         if (Auth::check()) {
             $role = Auth::user()->role;
-
-            if ($role == '1') {
-                $users = \App\Models\User::paginate(10);
-                return view('admin.dashboard', compact('users'));
-            } else {
-                $users = \App\Models\User::paginate(10);
-                return view('dashboard', compact('users'));
+    
+            // Redirect based on user role
+            switch ($role) {
+                case 'Admin':
+                    $users = \App\Models\User::paginate(10); // Pass the users data to the view
+                    return view('admin.dashboard', compact('users')); 
+                case 'Farm-Owner':
+                case 'Farm-Worker':
+                    $users = \App\Models\User::paginate(10);
+                    return view('dashboard', compact('users'));
+                default:
+                    // Handle unknown role or other cases
+                    return redirect()->route('login');
             }
         } else {
             // User is not authenticated, handle accordingly (redirect to login page, show a message, etc.)
-            return redirect()->route('login'); // Redirect to the login page, replace with your desired logic
+            return redirect()->route('login');
         }
     }
-
+    
 }
-

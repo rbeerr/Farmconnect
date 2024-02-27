@@ -1,13 +1,18 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call(\Database\Seeders\UsersTableSeeder::class);
-        $this->call(\Database\Seeders\AdminsTableSeeder::class);
+        // Seed the admin users
+        $this->call(AdminsTableSeeder::class);
+
+        // Seed FarmWorker and FarmOwner
+        $this->call(FarmWorkerSeeder::class);
+        $this->call(FarmOwnerSeeder::class);
     }
 }

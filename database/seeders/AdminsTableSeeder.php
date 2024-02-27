@@ -12,10 +12,16 @@ class AdminsTableSeeder extends Seeder
     {
         // Seed admin users
         User::create([
-            'name' => 'Admin1',
-            'email' => 'admin1@gmail.com',
-            'password' => Hash::make('admin123'), // Admin password
-            'role' => 1, // Admin role
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin123'),
+            'role' => 'Admin', // Update role to match the enum values in the migration
+            'firstName' => 'Admin',
+            'lastName' => 'User',
+            'contactNumber' => '1234567890',
+            'dateOfBirth' => '1990-01-01',
+            'province' => 'Sample Province',
+            'municipality' => 'Sample Municipality',
+            'barangay' => 'Sample Barangay',
         ]);
 
     }

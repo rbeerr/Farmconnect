@@ -27,7 +27,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'role', // Update role to accept Farm-Owner and Farm-Worker
+        'firstName', // Add firstName attribute
+        'lastName', // Add lastName attribute
+        'contactNumber', // Add contactNumber attribute
+        'dateOfBirth', // Add dateOfBirth attribute
+        'province', // Add province attribute
+        'municipality', // Add municipality attribute
+        'barangay', // Add barangay attribute
     ];
 
     /**
